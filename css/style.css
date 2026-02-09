@@ -1522,6 +1522,101 @@ footer p {
     }
 }
 
+@media (max-width: 768px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0 18px;
+    }
+
+    .hero,
+    .page-hero,
+    .home-hub,
+    .home-final-cta {
+        text-align: center;
+    }
+
+    .hero-content,
+    .home-hub .section-copy,
+    .home-final-cta p,
+    .section-copy {
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.75;
+    }
+
+    .hero-actions,
+    .cta-actions,
+    .trust-bar {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trust-bar span {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .home-hub-grid,
+    .service-cards,
+    .vehicle-cards,
+    .vehicle-gallery,
+    .video-gallery,
+    .about-features,
+    .contact-info,
+    .reasons {
+        grid-template-columns: 1fr;
+    }
+
+    .home-hub-card,
+    .card,
+    .gallery-card,
+    .video-card,
+    .feature,
+    .info-item {
+        text-align: left;
+    }
+
+    .nav-links {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .nav-links a {
+        text-align: left;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .nav-links .nav-cta {
+        min-height: 48px;
+        padding: 0.9rem 1.2rem;
+    }
+
+    .destination-slider {
+        overflow: hidden;
+    }
+
+    .destination-slide img {
+        height: clamp(300px, 62vh, 420px);
+    }
+
+    .scroll-bg-media {
+        opacity: 0.65;
+        transform: translate3d(0, var(--scroll-video-shift-y), 0) scale(1.04);
+    }
+
+    .map-frame,
+    .contact-form,
+    .signin-form,
+    .auth-card,
+    .auth-panel {
+        width: 100%;
+    }
+}
+
 @media (max-width: 640px) {
     .container {
         padding: 0 16px;
@@ -1581,6 +1676,63 @@ footer p {
 
     .destination-dots {
         bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    section {
+        padding: 52px 0;
+    }
+
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: clamp(1.45rem, 6vw, 1.8rem);
+    }
+
+    .hero h2 {
+        font-size: clamp(1.6rem, 7vw, 1.9rem);
+    }
+
+    .hero p,
+    p {
+        font-size: 0.98rem;
+        line-height: 1.78;
+    }
+
+    .nav-links a {
+        padding: 0.68rem 0.82rem;
+        font-size: 0.95rem;
+    }
+
+    .destination-overlay {
+        padding: 12px;
+        bottom: 10px;
+    }
+
+    .destination-slide img {
+        height: 300px;
+        object-position: center;
+    }
+
+    .destination-nav {
+        width: 38px;
+        height: 38px;
+    }
+
+    .trust-bar {
+        gap: 0.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
     }
 }
 
