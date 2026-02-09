@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Travel Baadsha</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="signup-section auth-section">
+            <div class="container auth-layout">
+                <aside class="auth-panel">
+                    <h2>Create Your Travel Account</h2>
+                    <p>Join Travel Baadsha to save booking details, track upcoming rides, and check special offers.</p>
+                    <ul class="auth-points">
+                        <li>One-click rebooking for frequent routes.</li>
+                        <li>Quick support for itinerary changes.</li>
+                        <li>Dedicated account dashboard for your trips.</li>
+                    </ul>
+                </aside>
+                <div class="auth-card">
+                    <h2>Sign Up</h2>
+                    <p class="auth-copy">Create an account with Google or use your email details.</p>
+
+                    <div class="google-signin-slot" data-google-signin data-google-mode="signup" data-google-client-id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"></div>
+                    <p class="helper-text">Replace <code>YOUR_GOOGLE_CLIENT_ID</code> in <code>signup.html</code> to enable Google account signup.</p>
+
+                    <div class="divider">
+                        <span>or sign up with email</span>
+                    </div>
+
+                    <form class="signin-form signup-form" data-api-endpoint="/api/auth/signup" data-api-method="POST">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full_name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-phone">Phone</label>
+                            <input type="tel" id="signup-phone" name="phone" autocomplete="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" name="password" autocomplete="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Create Account</button>
+                        <p class="form-status" aria-live="polite"></p>
+                    </form>
+
+                    <p class="auth-switch">Already have an account? <a href="signin.html">Sign in</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

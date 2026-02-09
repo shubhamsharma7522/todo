@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Travel Baadsha offers car rentals, bus rentals, tour packages, and booking support across India.">
+    <title>Travel Baadsha - Tour & Travel Business</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="home-main">
+        <section id="home" class="hero home-hero">
+            <div class="container hero-content">
+                <p class="eyebrow" data-reveal>Premium Tour & Travel Company</p>
+                <h2 data-reveal>Fast Bookings for Cars, Buses, and Complete Tour Plans</h2>
+                <p data-reveal>Travel Baadsha helps families, corporates, and groups with trusted drivers, clean vehicles, and transparent pricing across India.</p>
+                <div class="hero-actions" data-reveal-group>
+                    <a href="services.html" class="btn-primary">View Services</a>
+                    <a href="contact.html" class="btn-secondary">Request Quote</a>
+                </div>
+                <div class="trust-bar" data-reveal-group>
+                    <span>24/7 Support</span>
+                    <span>Verified Drivers</span>
+                    <span>Pan India Routes</span>
+                    <span>10+ Years Experience</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-hub">
+            <div class="container">
+                <h2 data-reveal>Choose Your Next Step</h2>
+                <p class="section-copy" data-reveal>Each area is kept on its own page so your frontend and backend routes stay clean and easy to maintain.</p>
+                <div class="home-hub-grid" data-reveal-group>
+                    <a class="home-hub-card" href="services.html">
+                        <h3>Services</h3>
+                        <p>Car rentals, bus rentals, and tour package enquiry flow.</p>
+                    </a>
+                    <a class="home-hub-card" href="gallery.html">
+                        <h3>Tour Destinations</h3>
+                        <p>Jaipur, Delhi, Manali, Agra and more in a smooth slider gallery.</p>
+                    </a>
+                    <a class="home-hub-card" href="videos.html">
+                        <h3>Videos</h3>
+                        <p>Vehicle and route showcase videos on a separate page.</p>
+                    </a>
+                    <a class="home-hub-card" href="signup.html">
+                        <h3>Sign Up</h3>
+                        <p>Google account signup and email registration flow.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-location">
+            <div class="container location-grid">
+                <article class="location-card" data-reveal>
+                    <h3>Main Office</h3>
+                    <p>Mumbai, Maharashtra, India</p>
+                    <ul class="location-points">
+                        <li>Phone: <a class="inline-link" href="tel:+919876543210">+91 98765 43210</a></li>
+                        <li>WhatsApp: <a class="inline-link" href="https://wa.me/919876543210">Start Chat</a></li>
+                        <li>Business Hours: 7:00 AM - 11:00 PM</li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary">Open Contact Page</a>
+                </article>
+                <div class="map-frame" data-reveal>
+                    <div
+                        id="travel-badsha-map"
+                        class="map-canvas"
+                        data-google-maps-key="YOUR_GOOGLE_MAPS_API_KEY"
+                        data-lat="19.0760"
+                        data-lng="72.8777"
+                        data-zoom="12"
+                        data-title="Travel Baadsha Office"
+                        aria-label="Travel Baadsha map"
+                    ></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-final-cta">
+            <div class="container" data-reveal>
+                <h2>Top Tour Destinations</h2>
+                <p>Slide through our most requested destinations and choose your next trip.</p>
+
+                <div class="destination-slider" data-destination-slider data-reveal>
+                    <div class="destination-track" data-slider-track>
+                        <article class="destination-slide">
+                            <img src="images/destination-jaipur-hawa-mahal.jpg" alt="Hawa Mahal in Jaipur" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Rajasthan</p>
+                                <h3>Jaipur - Hawa Mahal</h3>
+                                <p>Royal architecture and heritage city experience.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-delhi-india-gate.jpg" alt="India Gate in Delhi" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Capital Tour</p>
+                                <h3>Delhi - India Gate</h3>
+                                <p>Historical landmarks and city sightseeing tours.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-agra-taj-mahal.jpg" alt="Taj Mahal in Agra" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">World Wonder</p>
+                                <h3>Agra - Taj Mahal</h3>
+                                <p>Perfect for one-day and weekend getaway plans.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-manali.jpg" alt="Manali mountain valley" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Hill Station</p>
+                                <h3>Manali - Himalaya Route</h3>
+                                <p>Mountain adventures, snow points, and scenic stays.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-udaipur-city-palace.jpg" alt="Udaipur City Palace" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Lake City</p>
+                                <h3>Udaipur - City Palace</h3>
+                                <p>Romantic city breaks and luxury heritage tours.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-varanasi-ghat.jpg" alt="Varanasi river ghats" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Spiritual</p>
+                                <h3>Varanasi - Ghat Experience</h3>
+                                <p>Cultural and pilgrimage-focused route planning.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-jodhpur-mehrangarh.jpg" alt="Mehrangarh Fort in Jodhpur" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Fort Circuit</p>
+                                <h3>Jodhpur - Mehrangarh Fort</h3>
+                                <p>Blue city highlights and heritage fort exploration.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-amritsar-golden-temple.jpg" alt="Golden Temple in Amritsar" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Punjab</p>
+                                <h3>Amritsar - Golden Temple</h3>
+                                <p>Faith-based and family-oriented destination packages.</p>
+                            </div>
+                        </article>
+                        <article class="destination-slide">
+                            <img src="images/destination-mysore-palace.jpg" alt="Mysore Palace in Karnataka" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">South India</p>
+                                <h3>Mysore - Palace Tour</h3>
+                                <p>Royal palace visits with cultural and local city tours.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <button type="button" class="destination-nav prev" data-slider-prev aria-label="Previous destination slide">&#10094;</button>
+                    <button type="button" class="destination-nav next" data-slider-next aria-label="Next destination slide">&#10095;</button>
+                    <div class="destination-dots" data-slider-dots aria-label="Destination slide selector"></div>
+                </div>
+
+                <div class="cta-actions" data-reveal-group>
+                    <a href="gallery.html" class="btn-primary">Explore Destinations</a>
+                    <a href="contact.html" class="btn-secondary">Book This Tour</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
+

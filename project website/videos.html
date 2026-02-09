@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Videos - Travel Baadsha</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="videos">
+            <div class="container">
+                <h2>Vehicle Videos</h2>
+                <p class="section-copy">Use this section to showcase your owned cars and buses in action. Replace these embeds with your official business videos.</p>
+                <div class="video-gallery">
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/kbulCM90w8w" title="Car interior and comfort showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Car Interior and Comfort Showcase</h3>
+                    </article>
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/_B3P7E7CfRc" title="Route and on-road bus showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Bus Route and On-road Showcase</h3>
+                    </article>
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/_SSQH9Juk_4" title="Coach bus seating and comfort walkthrough video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Coach Seating and Comfort Walkthrough</h3>
+                    </article>
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/eKpJ95ND_bY" title="Premium car and road performance showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Premium Vehicle Performance Showcase</h3>
+                    </article>
+                </div>
+                <p class="media-note">Tip: Embed videos from your own YouTube channel for final client presentations.</p>
+
+                <div class="video-enquiry-block">
+                    <h3>Need a Live Vehicle Video Call?</h3>
+                    <p class="section-copy">This form is separated for videos page backend integration.</p>
+                    <form class="contact-form" data-api-endpoint="/api/video-enquiry" data-api-method="POST">
+                        <div class="form-group">
+                            <label for="video-name">Name</label>
+                            <input type="text" id="video-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-phone">Phone</label>
+                            <input type="tel" id="video-phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-vehicle">Vehicle Type</label>
+                            <select id="video-vehicle" name="vehicle_type" required>
+                                <option value="">Select vehicle</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="suv">SUV</option>
+                                <option value="tempo_traveller">Tempo Traveller</option>
+                                <option value="coach_bus">Coach Bus</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-message">What Do You Want to See?</label>
+                            <textarea id="video-message" name="message" rows="4" placeholder="Share route plan or features you want to inspect" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Request Video Demo</button>
+                        <p class="form-status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

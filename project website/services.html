@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Travel Baadsha</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <p class="eyebrow dark">Travel Baadsha Services</p>
+                <h2>Car Rentals, Bus Rentals, and Tour Packages</h2>
+                <p class="section-copy">Choose a service module and connect it directly to your backend booking engine and CRM pipeline.</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <div class="service-cards">
+                    <article class="card">
+                        <img src="images/sedan-car.jpg" alt="Premium sedan car rental service" loading="lazy" onerror="this.onerror=null;this.src='images/vehicle-01.jpg';">
+                        <h3>Car Rental Service</h3>
+                        <p>City rides, airport pickup/drop, and outstation travel with professional drivers.</p>
+                        <p class="vehicle-meta">Ideal for: Family and business travel</p>
+                    </article>
+                    <article class="card">
+                        <img src="images/vehicle-05.jpg" alt="Tour bus rental service" loading="lazy" onerror="this.onerror=null;this.src='images/vehicle-10.jpg';">
+                        <h3>Bus Rental Service</h3>
+                        <p>Tempo travellers, mini buses, and full-size coaches for events and group trips.</p>
+                        <p class="vehicle-meta">Ideal for: Group movement and tours</p>
+                    </article>
+                    <article class="card">
+                        <img src="images/destination-jaipur-hawa-mahal.jpg" alt="Jaipur tour package destination" loading="lazy" onerror="this.onerror=null;this.src='images/vehicle-07.jpg';">
+                        <h3>Tour Packages</h3>
+                        <p>Custom itineraries with transport planning for leisure, pilgrimage, and corporate travel.</p>
+                        <p class="vehicle-meta">Ideal for: Complete end-to-end travel planning</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>Service Enquiry</h2>
+                <p class="section-copy">This form is ready to connect with backend endpoint routes.</p>
+                <form class="contact-form" data-api-endpoint="/api/service-enquiry" data-api-method="POST">
+                    <div class="form-group">
+                        <label for="service-name">Service Needed</label>
+                        <select id="service-name" name="service_name" required>
+                            <option value="">Select service</option>
+                            <option value="car_rental">Car Rental</option>
+                            <option value="bus_rental">Bus Rental</option>
+                            <option value="tour_package">Tour Package</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-city">Pickup City</label>
+                        <input type="text" id="service-city" name="pickup_city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-date">Travel Date</label>
+                        <input type="date" id="service-date" name="travel_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-passengers">Passengers</label>
+                        <input type="number" id="service-passengers" name="passengers" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-notes">Requirement Details</label>
+                        <textarea id="service-notes" name="notes" rows="4" placeholder="Add route, hours, luggage, or special requirements"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit Enquiry</button>
+                    <p class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

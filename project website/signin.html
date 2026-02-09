@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Travel Baadsha</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="signin auth-section">
+            <div class="container auth-layout">
+                <aside class="auth-panel">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access your account, check booking details, and get faster support.</p>
+                    <ul class="auth-points">
+                        <li>View and manage your bookings in one place.</li>
+                        <li>Save preferred vehicles for quicker checkout.</li>
+                        <li>Get priority updates for trip confirmations.</li>
+                    </ul>
+                </aside>
+                <div class="auth-card">
+                    <h2>Sign In</h2>
+                    <p class="auth-copy">Sign in with Google or use your registered email and password.</p>
+
+                    <div class="google-signin-slot" data-google-signin data-google-mode="signin" data-google-client-id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"></div>
+                    <p class="helper-text">Replace <code>YOUR_GOOGLE_CLIENT_ID</code> in <code>signin.html</code> to enable Google account sign-in.</p>
+
+                    <div class="divider">
+                        <span>or sign in with email</span>
+                    </div>
+
+                    <form class="signin-form" data-api-endpoint="/api/auth/signin" data-api-method="POST">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" autocomplete="current-password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Sign In</button>
+                        <p class="form-status" aria-live="polite"></p>
+                    </form>
+                    <p class="auth-switch">Don't have an account? <a href="signup.html">Create one</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

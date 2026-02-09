@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Gallery - Travel Baadsha</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="immersive-page">
+    <div class="scroll-video-bg" aria-hidden="true">
+        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
+            <source src="media/travel-scroll-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <header>
+        <nav class="container">
+            <a class="logo" href="index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Destinations</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery destinations-section">
+            <div class="container">
+                <h2 data-reveal>Historic & Scenic Tour Destinations in India</h2>
+                <p class="section-copy" data-reveal>Explore popular places like Jaipur, Delhi, Manali, Agra, and more. This slider is frontend-ready and connected to a backend-ready enquiry form structure.</p>
+
+                <div class="destination-slider" data-destination-slider data-reveal>
+                    <div class="destination-track" data-slider-track>
+                        <article class="destination-slide" data-destination="jaipur-hawa-mahal">
+                            <img src="images/destination-jaipur-hawa-mahal.jpg" alt="Hawa Mahal in Jaipur" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Historic Landmark</p>
+                                <h3>Jaipur - Hawa Mahal</h3>
+                                <p>Explore pink city heritage, Amber Fort routes, and royal architecture.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="jaipur_hawa_mahal">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="delhi-india-gate">
+                            <img src="images/destination-delhi-india-gate.jpg" alt="India Gate in Delhi" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Capital Tour</p>
+                                <h3>Delhi - India Gate</h3>
+                                <p>Ideal for heritage circuit visits, city tours, and weekend bookings.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="delhi_india_gate">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="agra-taj-mahal">
+                            <img src="images/destination-agra-taj-mahal.jpg" alt="Taj Mahal in Agra" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Iconic Monument</p>
+                                <h3>Agra - Taj Mahal</h3>
+                                <p>Perfect for same-day and overnight tour packages from Delhi NCR.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="agra_taj_mahal">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="manali">
+                            <img src="images/destination-manali.jpg" alt="Scenic valley in Manali" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Hill Destination</p>
+                                <h3>Manali - Mountain Escape</h3>
+                                <p>Family and group packages with custom routes and stop planning.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="manali_himachal">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="udaipur-city-palace">
+                            <img src="images/destination-udaipur-city-palace.jpg" alt="Udaipur City Palace view" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Royal Rajasthan</p>
+                                <h3>Udaipur - City Palace</h3>
+                                <p>Luxury destination for weddings, corporate visits, and leisure tours.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="udaipur_city_palace">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="varanasi-ghat">
+                            <img src="images/destination-varanasi-ghat.jpg" alt="Varanasi ghats by the river" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Spiritual Route</p>
+                                <h3>Varanasi - Ghat Experience</h3>
+                                <p>Pilgrimage and culture-focused trips with curated local routes.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="varanasi_ghat">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="jodhpur-mehrangarh">
+                            <img src="images/destination-jodhpur-mehrangarh.jpg" alt="Mehrangarh Fort in Jodhpur" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Fort Circuit</p>
+                                <h3>Jodhpur - Mehrangarh Fort</h3>
+                                <p>Strong option for Rajasthan route extensions and group travel.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="jodhpur_mehrangarh">Plan This Trip</button>
+                            </div>
+                        </article>
+
+                        <article class="destination-slide" data-destination="amritsar-golden-temple">
+                            <img src="images/destination-amritsar-golden-temple.jpg" alt="Golden Temple in Amritsar" loading="lazy">
+                            <div class="destination-overlay">
+                                <p class="destination-tag">Sacred Landmark</p>
+                                <h3>Amritsar - Golden Temple</h3>
+                                <p>Faith-based and family tour planning with safe overnight travel options.</p>
+                                <button type="button" class="btn-primary destination-book-btn" data-slide-book="amritsar_golden_temple">Plan This Trip</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button type="button" class="destination-nav prev" data-slider-prev aria-label="Previous destination slide">&#10094;</button>
+                    <button type="button" class="destination-nav next" data-slider-next aria-label="Next destination slide">&#10095;</button>
+                    <div class="destination-dots" data-slider-dots aria-label="Destination slide selector"></div>
+                </div>
+
+                <form class="contact-form destination-enquiry-form" id="destination-enquiry-form" data-api-endpoint="/api/destination-enquiry" data-api-method="POST" data-reveal>
+                    <h3>Destination Enquiry (Backend Ready)</h3>
+                    <p class="section-copy">Submit destination leads directly to your backend route.</p>
+                    <div class="form-group">
+                        <label for="destination-name">Destination</label>
+                        <select id="destination-name" name="destination_name" required>
+                            <option value="">Select destination</option>
+                            <option value="jaipur_hawa_mahal">Jaipur - Hawa Mahal</option>
+                            <option value="delhi_india_gate">Delhi - India Gate</option>
+                            <option value="agra_taj_mahal">Agra - Taj Mahal</option>
+                            <option value="manali_himachal">Manali - Himachal</option>
+                            <option value="udaipur_city_palace">Udaipur - City Palace</option>
+                            <option value="varanasi_ghat">Varanasi - Ghat</option>
+                            <option value="jodhpur_mehrangarh">Jodhpur - Mehrangarh Fort</option>
+                            <option value="amritsar_golden_temple">Amritsar - Golden Temple</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="travel-date">Travel Date</label>
+                        <input type="date" id="travel-date" name="travel_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="group-size">Group Size</label>
+                        <input type="number" id="group-size" name="group_size" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-city">Pickup City</label>
+                        <input type="text" id="pickup-city" name="pickup_city" placeholder="Example: Delhi" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Destination Request</button>
+                    <p class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
