@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="immersive-page">
-    <div class="scroll-video-bg" aria-hidden="true">
-        <video class="scroll-bg-media" data-scroll-sync muted playsinline autoplay loop preload="auto">
-            <source src="./media/videos/travel-scroll-bg.mp4" type="video/mp4">
-        </video>
-    </div>
+
     <header>
         <nav class="container">
             <a class="logo" href="./index.html" aria-label="Travel Baadsha Home">
@@ -21,7 +17,6 @@
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./services.html">Services</a></li>
                 <li><a href="./gallery.html">Destinations</a></li>
-                <li><a href="./videos.html">Videos</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
                 <li><a href="signin.html">Sign In</a></li>
@@ -44,66 +39,170 @@
             </div>
         </section>
 
-        <section class="services">
+        <section class="services car-services">
             <div class="container">
-                <div class="service-cards">
-                    <article class="card">
-                        <img src="./media/images/sedan-car.jpg" alt="Premium sedan car rental service" loading="lazy" onerror="this.onerror=null;this.src='./media/images/vehicle-01.jpg';">
-                        <h3>Car Rental Service</h3>
-                        <p>City rides, airport pickup/drop, and outstation travel with professional drivers.</p>
-                        <p class="vehicle-meta">Ideal for: Family and business travel</p>
-                    </article>
-                    <article class="card">
-                        <img src="./media/images/vehicle-05.jpg" alt="Tour bus rental service" loading="lazy" onerror="this.onerror=null;this.src='./media/images/vehicle-10.jpg';">
-                        <h3>Bus Rental Service</h3>
-                        <p>Tempo travellers, mini buses, and full-size coaches for events and group trips.</p>
-                        <p class="vehicle-meta">Ideal for: Group movement and tours</p>
-                    </article>
-                    <article class="card">
-                        <img src="./media/images/destination-jaipur-hawa-mahal.jpg" alt="Jaipur tour package destination" loading="lazy" onerror="this.onerror=null;this.src='./media/images/vehicle-07.jpg';">
-                        <h3>Tour Packages</h3>
-                        <p>Custom itineraries with transport planning for leisure, pilgrimage, and corporate travel.</p>
-                        <p class="vehicle-meta">Ideal for: Complete end-to-end travel planning</p>
-                    </article>
+                <div class="services-header" data-reveal>
+                    <div>
+                        <p class="eyebrow dark">Luxury & Reliability</p>
+                        <h2>Car & Bus Rentals, plus curated Tour Packages</h2>
+                        <p class="section-copy">Browse live fleet categories, filter instantly, and book in a single step.</p>
+                    </div>
+                    <div class="service-duo">
+                        <div class="pill-card">
+                            <p>Premium Tours</p>
+                            <strong>Destination Packages</strong>
+                            <span>Driver + itinerary + stays</span>
+                        </div>
+                        <div class="pill-card">
+                            <p>Fleet On-Demand</p>
+                            <strong>Car & Bus Rental</strong>
+                            <span>Sports, Luxury, Budget, SUV, Volvo</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="filter-row service-filters" role="tablist" aria-label="Vehicle category filters">
+                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+                    <button class="filter-btn" data-filter="sports" role="tab">Sports Cars</button>
+                    <button class="filter-btn" data-filter="luxury-sedan" role="tab">Luxury Sedans</button>
+                    <button class="filter-btn" data-filter="budget-sedan" role="tab">Budget Sedans</button>
+                    <button class="filter-btn" data-filter="suv" role="tab">SUVs</button>
+                    <button class="filter-btn" data-filter="bus" role="tab">Bus Services</button>
+                </div>
+
+                <div class="category-stack" data-car-grid data-reveal></div>
             </div>
         </section>
 
-        <section class="contact">
-            <div class="container">
-                <h2>Service Enquiry</h2>
-                <p class="section-copy">This form is ready to connect with backend endpoint routes.</p>
-                <form class="contact-form" data-api-endpoint="/api/service-enquiry" data-api-method="POST">
-                    <div class="form-group">
-                        <label for="service-name">Service Needed</label>
-                        <select id="service-name" name="service_name" required>
-                            <option value="">Select service</option>
-                            <option value="car_rental">Car Rental</option>
-                            <option value="bus_rental">Bus Rental</option>
-                            <option value="tour_package">Tour Package</option>
-                        </select>
+        <div class="booking-modal" id="booking-modal" hidden>
+            <div class="booking-dialog">
+                <button class="close-modal" type="button" aria-label="Close booking">&times;</button>
+                <div class="booking-hero">
+                    <p class="badge" id="booking-category">Category</p>
+                    <h3 id="booking-name">Vehicle Name</h3>
+                    <p id="booking-price">Price per day</p>
+                </div>
+                <form id="booking-form">
+                    <input type="hidden" name="carId" id="booking-car-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Your Name</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email</label>
+                            <input type="email" id="customerEmail" name="customerEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone</label>
+                            <input type="tel" id="customerPhone" name="customerPhone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="service-city">Pickup City</label>
-                        <input type="text" id="service-city" name="pickup_city" required>
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Pickup point, timing, special requests"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="service-date">Travel Date</label>
-                        <input type="date" id="service-date" name="travel_date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-passengers">Passengers</label>
-                        <input type="number" id="service-passengers" name="passengers" min="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-notes">Requirement Details</label>
-                        <textarea id="service-notes" name="notes" rows="4" placeholder="Add route, hours, luggage, or special requirements"></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Submit Enquiry</button>
+                    <button type="submit" class="btn-primary">Confirm Booking</button>
                     <p class="form-status" aria-live="polite"></p>
                 </form>
             </div>
-        </section>
+        </div>
+
+        <div class="vehicle-modal" id="vehicle-modal" hidden>
+            <div class="vehicle-dialog">
+                <button class="close-modal" type="button" aria-label="Close vehicle details">&times;</button>
+                <div class="vehicle-layout">
+                    <div class="vehicle-gallery">
+                        <div class="gallery-main">
+                            <button class="gallery-nav" type="button" data-gallery-prev aria-label="Previous image">&lsaquo;</button>
+                            <img id="vehicle-main-image" src="./media/images/vehicle-01.jpg" alt="Vehicle photo">
+                            <button class="gallery-nav" type="button" data-gallery-next aria-label="Next image">&rsaquo;</button>
+                        </div>
+                        <div class="thumb-row" id="vehicle-thumbs"></div>
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-header">
+                            <p class="badge" id="vehicle-category">Category</p>
+                            <h3 id="vehicle-title">Vehicle Name</h3>
+                            <p class="vehicle-price" id="vehicle-price">₹—/day</p>
+                        </div>
+                        <p class="vehicle-description" id="vehicle-description"></p>
+                        <div class="vehicle-specs">
+                            <div class="spec">
+                                <span>Seats</span>
+                                <strong id="vehicle-seats">—</strong>
+                            </div>
+                            <div class="spec">
+                                <span>Fuel</span>
+                                <strong id="vehicle-fuel">—</strong>
+                            </div>
+                            <div class="spec">
+                                <span>Transmission</span>
+                                <strong id="vehicle-transmission">—</strong>
+                            </div>
+                            <div class="spec">
+                                <span>Color</span>
+                                <strong id="vehicle-color">—</strong>
+                            </div>
+                        </div>
+                        <div class="tag-row" id="vehicle-tags"></div>
+
+                        <form id="detail-booking-form" class="detail-form">
+                            <input type="hidden" id="detail-vehicle-id" name="vehicleId">
+                            <input type="hidden" id="detail-vehicle-name" name="vehicleName">
+                            <input type="hidden" id="detail-price-per-day" name="pricePerDay">
+                            <input type="hidden" id="detail-booking-source" name="bookingSource" value="form">
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="detail-customer-name">Your Name</label>
+                                    <input type="text" id="detail-customer-name" name="customerName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="detail-customer-email">Email</label>
+                                    <input type="email" id="detail-customer-email" name="customerEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="detail-customer-phone">Phone</label>
+                                    <input type="tel" id="detail-customer-phone" name="customerPhone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="detail-start-date">Start Date</label>
+                                    <input type="date" id="detail-start-date" name="startDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="detail-end-date">End Date</label>
+                                    <input type="date" id="detail-end-date" name="endDate" required>
+                                </div>
+                                <div class="form-group form-group--full">
+                                    <label for="detail-notes">Notes</label>
+                                    <textarea id="detail-notes" name="notes" rows="3" placeholder="Pickup point, timing, special requests"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn-secondary btn-whatsapp" type="button" id="whatsapp-book-btn">Book via WhatsApp</button>
+                                <button class="btn-primary btn-submit" type="submit">
+                                    <span class="btn-spinner is-hidden" aria-hidden="true"></span>
+                                    <span class="btn-label">Send Booking</span>
+                                </button>
+                            </div>
+                            <p class="form-status" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -112,11 +211,7 @@
         </div>
     </footer>
 
+    <script src="./js/vehicles.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
