@@ -1,19 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --brand: #0f4c81;
-    --brand-dark: #0b3559;
-    --accent: #f59f1a;
-    --accent-dark: #d98400;
-    --text: #162331;
-    --muted: #5e6f82;
-    --bg: #f3f7fb;
-    --surface: #ffffff;
-    --surface-soft: #eaf2fa;
-    --border: #d3dfec;
-    --shadow: 0 16px 36px rgba(11, 53, 89, 0.14);
-    --radius-lg: 18px;
-    --radius-md: 12px;
+    --brand: #0f172a;
+    --brand-dark: #070a13;
+    --accent: #d4af37;        /* Refined Metallic Gold */
+    --accent-dark: #b5922c;   /* Refined Champagne Gold */
+    --text: #f8fafc;          /* High contrast warm white text */
+    --muted: #94a3b8;         /* Elegant slate grey */
+    --bg: #090d16;            /* Midnight obsidian background */
+    --surface: #111724;       /* Deep charcoal surface */
+    --surface-soft: #1a2234;  /* Medium slate surface */
+    --border: rgba(255, 255, 255, 0.08); /* Frosted clean borders */
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 * {
@@ -23,38 +25,23 @@
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text);
-    background: linear-gradient(180deg, #f9fbff 0%, #eef2f7 100%);
+    background: var(--bg);
+    overflow-x: hidden;
 }
 
 .home-page {
-    background: #030c15;
+    background-image: linear-gradient(rgba(3, 12, 21, 0.65), rgba(3, 12, 21, 0.82)), url('../media/images/home-hero-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #030c15;
 }
 
 .home-page .bg-video-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.home-page .bg-video-layer::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(165deg, rgba(3, 13, 22, 0.45), rgba(10, 40, 65, 0.35));
-}
-
-.home-page .bg-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    filter: saturate(1.05) contrast(1.04);
-    transform: translateZ(0);
+    display: none;
 }
 
 .home-page header,
@@ -79,9 +66,13 @@ img {
     padding: 0 24px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
     margin-bottom: 0.9rem;
-    line-height: 1.2;
+    line-height: 1.25;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 h2 {
@@ -211,32 +202,36 @@ nav {
 }
 
 .home-page header {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(12px);
+    background-color: rgba(9, 13, 22, 0.78);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .home-page .logo h1 {
-    color: var(--brand-dark);
+    color: #ffffff;
+    font-family: var(--font-heading);
 }
 
 .home-page .nav-links a {
-    color: var(--brand-dark);
+    color: rgba(248, 250, 252, 0.85);
+    font-family: var(--font-body);
+    font-weight: 600;
 }
 
 .home-page .nav-links a:hover,
 .home-page .nav-links a:focus-visible {
-    color: var(--accent-dark);
-    background-color: #f5f7fb;
+    color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .home-page .hamburger {
-    border-color: var(--border);
-    background-color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .home-page .hamburger span {
-    background-color: var(--brand-dark);
+    background-color: #ffffff;
 }
 
 section {
@@ -941,9 +936,9 @@ section[id] {
     font-size: 0.78rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #99f6e4;
-    border: 1px solid rgba(20, 184, 166, 0.5);
-    background: rgba(20, 184, 166, 0.16);
+    color: var(--accent);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.12);
 }
 
 .destination-overlay h3 {
@@ -1103,20 +1098,30 @@ section[id] {
 }
 
 .filter-btn {
-    border: 1px solid var(--border);
-    background: #fff;
-    color: var(--text);
-    padding: 0.55rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(248, 250, 252, 0.85);
+    padding: 0.55rem 1.2rem;
     border-radius: 999px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    font-weight: 500;
+    transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
 }
 
 .filter-btn.is-active {
-    background: linear-gradient(135deg, #f5c451, #d99a22);
-    color: #0b0b11;
+    background: linear-gradient(135deg, #ff8a00, #e52d27);
+    color: #ffffff !important;
     border-color: transparent;
-    box-shadow: 0 12px 28px rgba(217, 154, 34, 0.22);
+    box-shadow: 0 10px 24px rgba(255, 138, 0, 0.35);
 }
 
 .modern-grid {
@@ -1135,73 +1140,82 @@ section[id] {
 .car-card {
     position: relative;
     overflow: hidden;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: 0 12px 28px rgba(15, 76, 129, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #111724;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .car-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 46px rgba(15, 76, 129, 0.18);
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
 .car-card img {
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     width: 100%;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .car-card:hover img {
-    transform: scale(1.06);
+    transform: scale(1.04);
 }
 
 .car-card .card-body {
-    padding: 1rem 1.1rem 1.1rem;
-    color: #111827;
+    padding: 1.3rem;
+    color: #f8fafc;
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.7rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 999px;
-    background: rgba(15, 76, 129, 0.08);
-    color: var(--brand-dark);
-    border: 1px solid rgba(15, 76, 129, 0.16);
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .car-card h3 {
     margin: 0 0 6px;
-    color: #111827;
+    color: #ffffff;
+    font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 20px;
+    font-size: 23px;
+    letter-spacing: -0.01em;
 }
 
 .car-card p {
     color: var(--muted);
+    font-size: 0.95rem;
 }
 
 .car-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem 0.7rem;
-    margin: 0.6rem 0 0.4rem;
+    gap: 0.4rem 0.8rem;
+    margin: 0.8rem 0 0.6rem;
     font-size: 13px;
-    color: #374151;
+    color: #cbd5e1;
 }
 
 .car-meta span {
-    color: #374151;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .price-pill {
     color: #0b0b11;
-    background: linear-gradient(135deg, #f5c451, #e2a63a);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     display: inline-flex;
     align-items: center;
     padding: 0.35rem 0.75rem;
@@ -1212,10 +1226,11 @@ section[id] {
 .car-card .btn-primary {
     width: 100%;
     margin-top: 0.6rem;
-    background: linear-gradient(135deg, #f5c451, #d99a22);
-    color: #0b0b11 !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #05080e !important;
     border: none;
-    box-shadow: 0 14px 28px rgba(217, 154, 34, 0.25);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+    font-weight: 700;
 }
 
 .car-actions {
@@ -2090,6 +2105,7 @@ footer p {
         top: calc(100% + 0.5rem);
         left: 0;
         right: 0;
+        z-index: 1001;
         flex-direction: column;
         background-color: var(--surface);
         border: 1px solid var(--border);
@@ -2476,29 +2492,33 @@ footer p {
 }
 
 .immersive-page header {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(12px);
+    background-color: rgba(9, 13, 22, 0.78) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .immersive-page .logo h1 {
-    color: var(--brand-dark);
+    color: #ffffff !important;
+    font-family: var(--font-heading);
     font-weight: 700;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     text-shadow: none;
 }
 
 .immersive-page .nav-links a {
-    color: var(--brand-dark);
+    color: rgba(248, 250, 252, 0.85) !important;
     border-radius: 10px;
     padding: 0.48rem 0.86rem;
+    font-family: var(--font-body);
+    font-weight: 600;
 }
 
 .immersive-page .nav-links a:hover,
 .immersive-page .nav-links a:focus-visible {
-    color: var(--accent-dark);
-    background-color: #f4f6fb;
+    color: var(--accent) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 .immersive-page .hamburger {
@@ -2507,7 +2527,11 @@ footer p {
 }
 
 .immersive-page .hamburger span {
-    background-color: var(--brand-dark);
+    background-color: var(--accent);
+}
+
+.immersive-page .hamburger:hover span {
+    background-color: var(--text);
 }
 
 .immersive-page .btn-primary,
@@ -2538,16 +2562,30 @@ footer p {
     transform: translateY(-2px);
 }
 
+.immersive-page .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    color: #05080e !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2) !important;
+}
+
+.immersive-page .btn-primary:hover {
+    background: linear-gradient(135deg, #eec33d, #c5a880) !important;
+    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
 .immersive-page .btn-secondary {
-    color: var(--brand-dark);
-    border: 1px solid var(--border);
-    background: #fff;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
 .immersive-page .btn-secondary:hover,
 .immersive-page .btn-secondary:focus-visible {
-    background: rgba(248, 250, 252, 0.16);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    transform: translateY(-2px) !important;
 }
 
 .immersive-page .card,
@@ -2567,11 +2605,11 @@ footer p {
 .immersive-page .story-panel,
 .immersive-page .fleet-item,
 .immersive-page .booking-card {
-    background: rgba(15, 23, 42, 0.34) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 30px !important;
-    box-shadow: 0 14px 34px rgba(2, 8, 23, 0.34);
-    backdrop-filter: blur(8px);
+    background: #111724 !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(16px);
 }
 
 .immersive-page .home-hub-card:hover,
@@ -2582,7 +2620,8 @@ footer p {
 .immersive-page .feature:hover,
 .immersive-page .info-item:hover {
     transform: translateY(-4px);
-    border-color: rgba(248, 250, 252, 0.36) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45) !important;
 }
 
 .immersive-page .video-card iframe,
@@ -2603,9 +2642,9 @@ footer p {
 .immersive-page .trust-bar span,
 .immersive-page .story-kicker,
 .immersive-page .story-chip-row span {
-    color: #99f6e4 !important;
-    background: rgba(20, 184, 166, 0.16) !important;
-    border-color: rgba(20, 184, 166, 0.48) !important;
+    color: var(--accent) !important;
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
 }
 
 .immersive-page .vehicle-meta,
@@ -2615,20 +2654,20 @@ footer p {
 .immersive-page .auth-switch a,
 .immersive-page .media-note,
 .immersive-page .media-note a {
-    color: #2dd4bf !important;
+    color: var(--accent) !important;
 }
 
 .immersive-page .auth-switch a:hover,
 .immersive-page .inline-link:hover,
 .immersive-page .media-note a:hover {
-    color: #5eead4 !important;
+    color: #ffd700 !important;
 }
 
 .immersive-page .helper-text code,
 .immersive-page .map-note code {
-    color: #99f6e4;
+    color: var(--accent);
     background: rgba(15, 23, 42, 0.42);
-    border-color: rgba(248, 250, 252, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .immersive-page .google-message {
@@ -2685,4 +2724,26 @@ footer p {
         border-color: rgba(248, 250, 252, 0.24) !important;
         box-shadow: 0 18px 34px rgba(2, 8, 23, 0.45) !important;
     }
+}
+
+/* Elegant and high-contrast styling for the vehicle category filter buttons inside immersive light pages */
+.immersive-page:not(.home-page) .filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(248, 250, 252, 0.85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.immersive-page:not(.home-page) .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.immersive-page:not(.home-page) .filter-btn.is-active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    color: #05080e !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 22px rgba(212, 175, 55, 0.38) !important;
 }

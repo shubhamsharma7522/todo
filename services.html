@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Travel Baadsha</title>
+    <meta name="description" content="Explore and book premium chauffeur-driven sedans, luxury mini buses, and spacious tourist travellers with Travel Baadsha. Instant reservations.">
+    <title>Our Services - Travel Baadsha Fleet Rentals</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="immersive-page">
@@ -31,174 +32,156 @@
     </header>
 
     <main>
-        <section class="page-hero">
-            <div class="container">
-                <p class="eyebrow dark">Travel Baadsha Services</p>
-                <h2>Car Rentals, Bus Rentals, and Tour Packages</h2>
-                <p class="section-copy">Choose a service module and connect it directly to your backend booking engine and CRM pipeline.</p>
+        <!-- Unified Premium Page Hero (Consolidated Content Hierarchy) -->
+        <section class="page-hero" style="padding: 50px 0 25px;">
+            <div class="container" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                <div style="flex: 1 1 500px;">
+                    <p class="eyebrow dark" style="background-color: rgba(212, 175, 55, 0.12); border: 1px solid rgba(212, 175, 55, 0.25); color: var(--accent);">Elite Passenger Comfort</p>
+                    <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0.5rem 0 0.8rem; line-height: 1.15;">Premium Fleet Rentals & Travel Comfort</h2>
+                    <p class="section-copy" style="max-width: 620px; font-size: 1.02rem;">Select from our meticulously maintained fleet. Filter instantly by vehicle class and request custom booking quotes with our professional chauffeur team.</p>
+                </div>
+                <div class="service-duo" style="flex: 1 1 400px; display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                    <div class="pill-card" style="padding: 0.9rem 1rem; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.15rem;">Private Tours</p>
+                        <strong style="display: block; font-size: 1rem; margin-bottom: 0.2rem; color: #ffffff;">Customized Travel</strong>
+                        <span style="font-size: 0.82rem; color: var(--muted);">Experienced chauffeur + private itinerary</span>
+                    </div>
+                    <div class="pill-card" style="padding: 0.9rem 1rem; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.15rem;">Premium Fleets</p>
+                        <strong style="display: block; font-size: 1rem; margin-bottom: 0.2rem; color: #ffffff;">Verified Fleets</strong>
+                        <span style="font-size: 0.82rem; color: var(--muted);">Sedans, Sports Roadsters, SUVs & Group Travellers</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="services car-services">
+        <!-- Services Section (Compact & Scannable Layout) -->
+        <section class="services car-services" style="padding: 10px 0 50px;">
             <div class="container">
-                <div class="services-header" data-reveal>
-                    <div>
-                        <p class="eyebrow dark">Luxury & Reliability</p>
-                        <h2>Car & Bus Rentals, plus curated Tour Packages</h2>
-                        <p class="section-copy">Browse live fleet categories, filter instantly, and book in a single step.</p>
-                    </div>
-                    <div class="service-duo">
-                        <div class="pill-card">
-                            <p>Premium Tours</p>
-                            <strong>Destination Packages</strong>
-                            <span>Driver + itinerary + stays</span>
-                        </div>
-                        <div class="pill-card">
-                            <p>Fleet On-Demand</p>
-                            <strong>Car & Bus Rental</strong>
-                            <span>Sports, Luxury, Budget, SUV, Volvo</span>
-                        </div>
-                    </div>
+                <!-- Instant Category Filters -->
+                <div class="filter-row service-filters" role="tablist" aria-label="Vehicle category filters" style="margin: 0 0 2rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All Classes</button>
+                    <button class="filter-btn" data-filter="sedan" role="tab">Sedan</button>
+                    <button class="filter-btn" data-filter="mini-bus" role="tab">Mini Bus</button>
+                    <button class="filter-btn" data-filter="traveller" role="tab">Traveller</button>
                 </div>
 
-                <div class="filter-row service-filters" role="tablist" aria-label="Vehicle category filters">
-                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-                    <button class="filter-btn" data-filter="sports" role="tab">Sports Cars</button>
-                    <button class="filter-btn" data-filter="luxury-sedan" role="tab">Luxury Sedans</button>
-                    <button class="filter-btn" data-filter="budget-sedan" role="tab">Budget Sedans</button>
-                    <button class="filter-btn" data-filter="suv" role="tab">SUVs</button>
-                    <button class="filter-btn" data-filter="bus" role="tab">Bus Services</button>
-                </div>
-
+                <!-- Active Grid served dynamically by main.js -->
                 <div class="category-stack" data-car-grid data-reveal></div>
             </div>
         </section>
 
+        <!-- Booking Modal Form -->
         <div class="booking-modal" id="booking-modal" hidden>
             <div class="booking-dialog">
                 <button class="close-modal" type="button" aria-label="Close booking">&times;</button>
                 <div class="booking-hero">
                     <p class="badge" id="booking-category">Category</p>
-                    <h3 id="booking-name">Vehicle Name</h3>
-                    <p id="booking-price">Price per day</p>
+                    <h3 id="booking-name" style="color: #ffffff; margin-top: 0.3rem;">Vehicle Name</h3>
                 </div>
-                <form id="booking-form">
+                <form id="booking-form" style="margin-top: 1.2rem;">
                     <input type="hidden" name="carId" id="booking-car-id">
+                    
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="customerName">Your Name</label>
-                            <input type="text" id="customerName" name="customerName" required>
+                            <label for="customerName">Full Name</label>
+                            <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
-                            <label for="customerEmail">Email</label>
-                            <input type="email" id="customerEmail" name="customerEmail">
+                            <label for="customerEmail">Email Address</label>
+                            <input type="email" id="customerEmail" name="customerEmail" placeholder="name@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="customerPhone">Phone</label>
-                            <input type="tel" id="customerPhone" name="customerPhone">
+                            <label for="customerPhone">Phone Number</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="startDate">Start Date</label>
+                            <label for="startDate">Journey Start Date</label>
                             <input type="date" id="startDate" name="startDate" required>
                         </div>
                         <div class="form-group">
-                            <label for="endDate">End Date</label>
+                            <label for="endDate">Journey Return Date</label>
                             <input type="date" id="endDate" name="endDate" required>
                         </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="notes">Notes</label>
-                        <textarea id="notes" name="notes" rows="3" placeholder="Pickup point, timing, special requests"></textarea>
+                        <label for="notes">Special Requirements or Custom Route Plan</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Let us know about stopovers, luggage sizes, or specific travel plans..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary">Confirm Booking</button>
-                    <p class="form-status" aria-live="polite"></p>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.8rem;">Confirm Trip Reservation</button>
+                    <p class="form-status" aria-live="polite" style="margin-top: 0.6rem; font-size: 0.9rem; text-align: center;"></p>
                 </form>
             </div>
         </div>
 
+        <!-- Vehicle Details Modal (Perfectly Matched with style.css Classes) -->
         <div class="vehicle-modal" id="vehicle-modal" hidden>
             <div class="vehicle-dialog">
-                <button class="close-modal" type="button" aria-label="Close vehicle details">&times;</button>
+                <button class="close-modal" type="button" aria-label="Close details">&times;</button>
                 <div class="vehicle-layout">
+                    <!-- Gallery component -->
                     <div class="vehicle-gallery">
                         <div class="gallery-main">
-                            <button class="gallery-nav" type="button" data-gallery-prev aria-label="Previous image">&lsaquo;</button>
-                            <img id="vehicle-main-image" src="./media/images/vehicle-01.jpg" alt="Vehicle photo">
-                            <button class="gallery-nav" type="button" data-gallery-next aria-label="Next image">&rsaquo;</button>
+                            <button class="gallery-nav" data-gallery-prev type="button" aria-label="Previous image">&lt;</button>
+                            <img id="vehicle-main-image" src="./media/images/vehicle-01.jpg" alt="Vehicle image active view">
+                            <button class="gallery-nav" data-gallery-next type="button" aria-label="Next image">&gt;</button>
                         </div>
                         <div class="thumb-row" id="vehicle-thumbs"></div>
                     </div>
+                    
+                    <!-- Information component -->
                     <div class="vehicle-info">
-                        <div class="vehicle-header">
-                            <p class="badge" id="vehicle-category">Category</p>
-                            <h3 id="vehicle-title">Vehicle Name</h3>
-                            <p class="vehicle-price" id="vehicle-price">₹—/day</p>
+                        <span class="badge" id="vehicle-category">Category</span>
+                        <h3 id="vehicle-title" style="color: #ffffff; font-size: clamp(1.4rem, 3vw, 1.8rem); margin: 0.4rem 0 0.8rem; font-weight: 700; font-family: var(--font-heading);">Vehicle Name</h3>
+                        <p class="vehicle-description" id="vehicle-description" style="font-size: 0.92rem; line-height: 1.5; color: #94a3b8; margin-bottom: 1rem;">Vehicle description details.</p>
+                        
+                        <!-- Core specs -->
+                        <div class="vehicle-specs" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin-bottom: 0.8rem;">
+                            <div class="spec" style="padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase;">Seats</span>
+                                <strong id="vehicle-seats" style="font-size: 0.88rem; color: #ffffff; font-weight: 600;">5 Seats</strong>
+                            </div>
+                            <div class="spec" style="padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase;">Fuel Type</span>
+                                <strong id="vehicle-fuel" style="font-size: 0.88rem; color: #ffffff; font-weight: 600;">Diesel</strong>
+                            </div>
+                            <div class="spec" style="padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase;">Transmission</span>
+                                <strong id="vehicle-transmission" style="font-size: 0.88rem; color: #ffffff; font-weight: 600;">Automatic</strong>
+                            </div>
+                            <div class="spec" style="padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase;">Color</span>
+                                <strong id="vehicle-color" style="font-size: 0.88rem; color: #ffffff; font-weight: 600;">White</strong>
+                            </div>
                         </div>
-                        <p class="vehicle-description" id="vehicle-description"></p>
-                        <div class="vehicle-specs">
-                            <div class="spec">
-                                <span>Seats</span>
-                                <strong id="vehicle-seats">—</strong>
+
+                        <!-- Dynamic Rework Specs -->
+                        <div class="vehicle-specs-extra" style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem;">
+                            <div class="spec-extra" style="padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: var(--accent); text-transform: uppercase; font-weight: 600; margin-bottom: 0.15rem; letter-spacing: 0.02em;">Recommended Travel Usage</span>
+                                <strong id="vehicle-usage" style="display: block; font-size: 0.88rem; color: #ffffff; font-weight: 500; line-height: 1.4;">Chauffeur-driven outstation trips, airport pick-ups, family holidays.</strong>
                             </div>
-                            <div class="spec">
-                                <span>Fuel</span>
-                                <strong id="vehicle-fuel">—</strong>
+                            <div class="spec-extra" style="padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: var(--accent); text-transform: uppercase; font-weight: 600; margin-bottom: 0.15rem; letter-spacing: 0.02em;">Premium Comfort & Features</span>
+                                <strong id="vehicle-comfort" style="display: block; font-size: 0.88rem; color: #ffffff; font-weight: 500; line-height: 1.4;">Premium climate control, plush ergonomic seating, dynamic ambient lighting.</strong>
                             </div>
-                            <div class="spec">
-                                <span>Transmission</span>
-                                <strong id="vehicle-transmission">—</strong>
-                            </div>
-                            <div class="spec">
-                                <span>Color</span>
-                                <strong id="vehicle-color">—</strong>
+                            <div class="spec-extra" style="padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+                                <span style="display: block; font-size: 0.72rem; color: var(--accent); text-transform: uppercase; font-weight: 600; margin-bottom: 0.15rem; letter-spacing: 0.02em;">Suitable Tour Profile</span>
+                                <strong id="vehicle-travel-type" style="display: block; font-size: 0.88rem; color: #ffffff; font-weight: 500; line-height: 1.4;">VIP Executive, Small Families, Corporate Chauffeur.</strong>
                             </div>
                         </div>
-                        <div class="tag-row" id="vehicle-tags"></div>
-
-                        <form id="detail-booking-form" class="detail-form">
-                            <input type="hidden" id="detail-vehicle-id" name="vehicleId">
-                            <input type="hidden" id="detail-vehicle-name" name="vehicleName">
-                            <input type="hidden" id="detail-price-per-day" name="pricePerDay">
-                            <input type="hidden" id="detail-booking-source" name="bookingSource" value="form">
-
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="detail-customer-name">Your Name</label>
-                                    <input type="text" id="detail-customer-name" name="customerName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="detail-customer-email">Email</label>
-                                    <input type="email" id="detail-customer-email" name="customerEmail" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="detail-customer-phone">Phone</label>
-                                    <input type="tel" id="detail-customer-phone" name="customerPhone" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="detail-start-date">Start Date</label>
-                                    <input type="date" id="detail-start-date" name="startDate" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="detail-end-date">End Date</label>
-                                    <input type="date" id="detail-end-date" name="endDate" required>
-                                </div>
-                                <div class="form-group form-group--full">
-                                    <label for="detail-notes">Notes</label>
-                                    <textarea id="detail-notes" name="notes" rows="3" placeholder="Pickup point, timing, special requests"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-actions">
-                                <button class="btn-secondary btn-whatsapp" type="button" id="whatsapp-book-btn">Book via WhatsApp</button>
-                                <button class="btn-primary btn-submit" type="submit">
-                                    <span class="btn-spinner is-hidden" aria-hidden="true"></span>
-                                    <span class="btn-label">Send Booking</span>
-                                </button>
-                            </div>
-                            <p class="form-status" aria-live="polite"></p>
-                        </form>
+                        
+                        <div class="tags-row" id="vehicle-tags" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;"></div>
+                        
+                        <div class="action-footer" style="display: flex; gap: 0.8rem; margin-top: 1.2rem;">
+                            <button class="btn-primary" id="detail-book-now" type="button" style="flex: 1; padding: 0.75rem; font-size: 0.95rem;">Book This Vehicle</button>
+                            <a class="btn-whatsapp-icon" id="detail-whatsapp-btn" href="#" target="_blank" rel="noreferrer noopener" style="flex: 0 0 42px; display: inline-flex; align-items: center; justify-content: center; height: 42px; width: 42px; border-radius: 12px; border: 1px solid #25d366; background: rgba(37, 211, 102, 0.12); color: #25d366; font-weight: 700; text-decoration: none;" aria-label="Book via WhatsApp">WA</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,7 +190,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Travel Baadsha. All rights reserved.</p>
+            <p>&copy; 2026 Travel Baadsha. All rights reserved. Premium Fleet Rentals & Luxury Tours.</p>
         </div>
     </footer>
 
