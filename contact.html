@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Travel Baadsha. Request customized trip quotes, premium sedan rentals, or bus rentals. Secure support.">
+    <title>Contact Us - Travel Baadsha</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="immersive-page">
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="./index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./gallery.html">Destinations</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Contact Page -->
+        <section class="contact">
+            <div class="container">
+                <h2>Connect With Travel Baadsha</h2>
+                <p class="section-copy">Whether you have a specific travel dates outline, corporate travel itinerary, or group wedding bus requirement, our dedicated booking desk is standing by to assist.</p>
+                
+                <div class="contact-info">
+                    <article class="info-item">
+                        <h3>Main Office Address</h3>
+                        <p>Sindhi Camp Bus Stand, Jaipur, Rajasthan, India - 302001</p>
+                    </article>
+                    
+                    <article class="info-item">
+                        <h3>Direct Phone Support</h3>
+                        <p><a href="tel:+917239967352">+91 72399 67352</a></p>
+                    </article>
+                    
+                    <article class="info-item">
+                        <h3>Instant WhatsApp Desk</h3>
+                        <a href="https://wa.me/917239967352" class="btn-primary" target="_blank" rel="noreferrer noopener">Chat on WhatsApp</a>
+                    </article>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form" data-api-endpoint="/api/contact-enquiry" data-api-method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Active Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requirement">Detailed Travel Requirements</label>
+                        <textarea id="requirement" name="requirement" rows="5" placeholder="Example: Delhi to Jaipur round trip, 6 travelers, weekend departure. Include preferences like luggage size or custom drop-offs..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Send Booking Inquiry</button>
+                    <p class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved. Premium Vehicles & Honest Support.</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

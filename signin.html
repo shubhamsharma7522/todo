@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Travel Baadsha Portal</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="immersive-page">
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="./index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./gallery.html">Destinations</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="signin auth-section">
+            <div class="container auth-layout">
+                <aside class="auth-panel">
+                    <h2>Welcome Back to Your Portal</h2>
+                    <p>Log in securely to access your bookings dashboard, retrieve active trip itineraries, and receive priority support updates.</p>
+                    <ul class="auth-points">
+                        <li>View and manage all active tour itineraries in one place.</li>
+                        <li>Enjoy quicker reservation checkouts with saved passenger details.</li>
+                        <li>Gain priority access to live route changes and chauffeur alerts.</li>
+                    </ul>
+                </aside>
+                
+                <div class="auth-card">
+                    <h2>Sign In</h2>
+                    <p class="auth-copy">Authenticate instantly with Google to view and manage your travel bookings securely.</p>
+                    <div
+                        class="google-signin-slot"
+                        data-google-signin
+                        data-google-client-id="742266540713-jantj4m8edothcs03tcpau8lb7060o1n.apps.googleusercontent.com"
+                        data-google-mode="signin"
+                    ></div>
+                    <p class="helper-text">Having trouble? <a href="/api/auth/google">Use direct Google sign-in</a>.</p>
+                    <p class="auth-switch">New to Travel Baadsha? <a href="signup.html">Create a traveler profile</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved. Secure Portal Access.</p>
+        </div>
+    </footer>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

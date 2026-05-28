@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Take a virtual tour of the Travel Baadsha premium fleet. Watch comfort walkarounds, highway performances, and interior reviews.">
+    <title>Vehicle Showcase Videos - Travel Baadsha</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="immersive-page">
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="./index.html" aria-label="Travel Baadsha Home">
+                <h1>Travel Baadsha</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./gallery.html">Destinations</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="videos">
+            <div class="container">
+                <h2>Virtual Fleet Showroom</h2>
+                <p class="section-copy">Step inside our luxury fleet from the comfort of your home. Take a virtual walkthrough of our premium tour coaches and sedans, ensuring peace of mind prior to booking.</p>
+                
+                <div class="video-gallery">
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/kbulCM90w8w" title="Car interior and comfort showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Sedan Interior & Cabin Comfort</h3>
+                    </article>
+                    
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/_B3P7E7CfRc" title="Route and on-road bus showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Luxury Coach Highway Performance</h3>
+                    </article>
+                    
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/_SSQH9Juk_4" title="Coach bus seating and comfort walkthrough video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Coach Seating & Luggage Compartments</h3>
+                    </article>
+                    
+                    <article class="video-card">
+                        <iframe src="https://www.youtube.com/embed/eKpJ95ND_bY" title="Premium car and road performance showcase video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Premium SUV & All-Terrain Agility</h3>
+                    </article>
+                </div>
+                
+                <p class="media-note">All vehicles are certified for maximum safety, offering a superior travel experience across all terrains.</p>
+                
+                <!-- Live Video Consultation Request -->
+                <div class="video-enquiry-block">
+                    <h3>Request a Live Video Inspection</h3>
+                    <p class="section-copy">Want a live, real-time virtual walkthrough of any vehicle? Request a live video inspection, and our support team will show you the exact vehicle and its premium amenities prior to departure.</p>
+                    
+                    <form class="contact-form" data-api-endpoint="/api/video-enquiry" data-api-method="POST">
+                        <div class="form-group">
+                            <label for="video-name">Your Name</label>
+                            <input type="text" id="video-name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="video-phone">WhatsApp Number</label>
+                            <input type="tel" id="video-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="video-vehicle">Target Fleet Category</label>
+                            <select id="video-vehicle" name="vehicle_type" required>
+                                <option value="">Select vehicle class</option>
+                                <option value="sedan">Premium Sedan</option>
+                                <option value="suv">Luxury SUV</option>
+                                <option value="tempo_traveller">Tempo Traveller Van</option>
+                                <option value="coach_bus">Executive Coach Bus</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="video-message">What would you like to inspect?</label>
+                            <textarea id="video-message" name="message" rows="4" placeholder="Let us know what details you want to see (e.g. cabin layout, legroom, luggage bay)..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Schedule Video Inspection</button>
+                        <p class="form-status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Travel Baadsha. All rights reserved. Premium Vehicles & Transparent Support.</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
