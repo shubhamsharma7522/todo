@@ -1198,20 +1198,13 @@
                     return;
                 }
 
-                const payload = {
-                    vehicleId: form.querySelector('#booking-car-id').value,
-                    vehicleName: form.dataset.vehicleName || '',
-                    pricePerDay: Number(form.dataset.pricePerDay || 0),
-                    userName: form.customerName.value.trim(),
-                    email: form.customerEmail.value.trim(),
-                    phone: form.customerPhone.value.trim(),
-                    startDate,
-                    endDate,
-                    notes: form.notes.value.trim(),
-                    bookingSource: 'form'
-                };
+                const vehicleName = form.dataset.vehicleName || 'a vehicle';
+                const userName = form.customerName ? form.customerName.value.trim() : '';
+                const phone = form.customerPhone ? form.customerPhone.value.trim() : '';
+                const email = form.customerEmail ? form.customerEmail.value.trim() : '';
+                const notes = form.notes ? form.notes.value.trim() : '';
 
-                if (!payload.userName || !payload.email || !payload.phone) {
+                if (!userName || !email || !phone) {
                     if (status) {
                         status.textContent = 'Name, email, and phone are required.';
                         status.classList.add('is-error');
@@ -1219,49 +1212,75 @@
                     return;
                 }
 
+                // Build WhatsApp message for static/GH Pages environment
+                const waMsg = encodeURIComponent(
+                    `Hello Travel Baadsha!%0A%0A` +
+                    `I want to book: *${vehicleName}*%0A` +
+                    `Name: ${userName}%0A` +
+                    `Phone: ${phone}%0A` +
+                    `Email: ${email}%0A` +
+                    `From: ${startDate}  To: ${endDate}` +
+                    (notes ? `%0ANotes: ${notes}` : '')
+                );
+
                 if (status) {
                     status.textContent = 'Submitting...';
                     status.classList.remove('is-error', 'is-success');
                 }
                 if (submitBtn) submitBtn.disabled = true;
 
+                // Try backend API first; fall back to WhatsApp on static hosting
+                let apiSucceeded = false;
                 try {
                     const response = await fetch('/api/bookings', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+                        body: JSON.stringify({
+                            vehicleId: form.querySelector('#booking-car-id') ? form.querySelector('#booking-car-id').value : '',
+                            vehicleName,
+                            pricePerDay: Number(form.dataset.pricePerDay || 0),
+                            userName,
+                            email,
+                            phone,
+                            startDate,
+                            endDate,
+                            notes,
+                            bookingSource: 'form'
+                        })
                     });
-                    if (!response.ok) {
-                        const data = await response.json().catch(() => null);
-                        throw new Error((data && data.message) || 'Booking failed.');
+                    if (response.ok) {
+                        apiSucceeded = true;
+                        if (status) {
+                            status.textContent = 'Booking submitted! We will confirm shortly.';
+                            status.classList.add('is-success');
+                        }
+                        form.reset();
+                        window.setTimeout(hideBookingModal, 1200);
                     }
+                } catch (_apiError) {
+                    // API not available — fall through to WhatsApp
+                }
+
+                if (!apiSucceeded) {
+                    // Redirect to WhatsApp with pre-filled booking details
                     if (status) {
-                        status.textContent = 'Booking submitted. We will confirm shortly.';
+                        status.textContent = 'Redirecting to WhatsApp to complete your booking...';
                         status.classList.add('is-success');
                     }
-                    form.reset();
-                    window.setTimeout(hideBookingModal, 800);
-                } catch (error) {
-                    if (status) {
-                        status.textContent = error.message;
-                        status.classList.add('is-error');
-                    }
-                } finally {
-                    if (submitBtn) submitBtn.disabled = false;
+                    window.setTimeout(() => {
+                        window.open(`https://wa.me/919876543210?text=${waMsg}`, '_blank');
+                        hideBookingModal();
+                    }, 800);
                 }
+
+                if (submitBtn) submitBtn.disabled = false;
             });
         }
 
+        // Vehicles always loaded from pre-populated static window.VEHICLES array
         if (!cars.length) {
-            try {
-                const res = await fetch('/api/cars');
-                if (!res.ok) throw new Error('Could not load cars');
-                const data = await res.json();
-                cars = data.cars || [];
-            } catch (error) {
-                grid.innerHTML = `<p class="form-status is-error">${error.message}</p>`;
-                return;
-            }
+            grid.innerHTML = '<p class="form-status is-error">No vehicles available at the moment. Please contact us directly.</p>';
+            return;
         }
 
         renderCars('all');
