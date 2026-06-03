@@ -15,6 +15,7 @@
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 </head>
 <body class="home-page immersive-page">
+    <div class="parallax-bg"></div>
 
 
 
@@ -52,9 +53,9 @@
                 </div>
                 <div class="trust-bar" data-reveal-group>
                     <span>24/7 Dedicated Support</span>
-                    <span>Professional Chauffeurs</span>
-                    <span>Pan-India Tour Licenses</span>
-                    <span>Over a Decade of Trust</span>
+                    <span>100% Verified Chauffeurs</span>
+                    <span><strong class="stat-counter" data-count-to="30">0</strong>+ Tour Destinations</span>
+                    <span>Over <strong class="stat-counter" data-count-to="10">0</strong>+ Years of Trust</span>
                 </div>
             </div>
         </section>
@@ -84,7 +85,7 @@
         <!-- Location and Map Section -->
         <section class="home-location">
             <div class="container location-grid">
-                <article class="location-card" data-reveal>
+                <article class="location-card home-location-reveal-left">
                     <h3>Headquarters</h3>
                     <p>Sindhi Camp Bus Stand, Jaipur, Rajasthan, India - 302001</p>
                     <ul class="location-points">
@@ -94,7 +95,7 @@
                     </ul>
                     <a href="./contact.html" class="btn-primary">Contact Office</a>
                 </article>
-                <div class="map-frame" data-reveal>
+                <div class="map-frame home-location-reveal-right">
                     <div
                         id="travel-badsha-map"
                         class="map-canvas"
@@ -110,11 +111,11 @@
         </section>
 
         <!-- Dynamic Destination Slider -->
-        <section class="home-final-cta">
-            <div class="container" data-reveal>
-                <h2>Top Tour Packages</h2>
-                <p>Browse through our most popular itineraries, designed for comfort and unforgettable cultural experiences.</p>
-                <div class="destination-slider" data-destination-slider data-reveal>
+        <section class="home-final-cta tour-packages-section">
+            <div class="container">
+                <h2 class="tour-reveal-item">Top Tour Packages</h2>
+                <p class="tour-reveal-item">Browse through our most popular itineraries, designed for comfort and unforgettable cultural experiences.</p>
+                <div class="destination-slider tour-reveal-item" data-destination-slider>
                     <div class="destination-track" data-slider-track>
                         <article class="destination-slide">
                             <img src="./media/images/destination-jaipur-hawa-mahal.jpg" alt="Hawa Mahal in Jaipur" loading="lazy">
@@ -193,7 +194,7 @@
                     <button type="button" class="destination-nav next" data-slider-next aria-label="Next destination slide">&#10095;</button>
                     <div class="destination-dots" data-slider-dots aria-label="Destination slide selector"></div>
                 </div>
-                <div class="cta-actions" data-reveal-group>
+                <div class="cta-actions tour-reveal-item">
                     <a href="./gallery.html" class="btn-primary">Browse All Itineraries</a>
                     <a href="./contact.html" class="btn-secondary">Plan a Custom Tour</a>
                 </div>

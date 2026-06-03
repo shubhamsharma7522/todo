@@ -1,13 +1,16 @@
 (() => {
     'use strict';
 
-    window.WHATSAPP_PHONE = window.WHATSAPP_PHONE || '917073145232';
+    const BUSINESS_CONFIG = {
+        whatsapp: window.WHATSAPP_PHONE || '917073145232'
+    };
+
+    window.WHATSAPP_PHONE = BUSINESS_CONFIG.whatsapp;
     window.GCS_API_KEY = window.GCS_API_KEY || '';
     window.GCS_CX = window.GCS_CX || '';
 
     function generateWhatsAppURL(message) {
-        const WHATSAPP_NUMBER = "917073145232";
-        return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        return `https://wa.me/${BUSINESS_CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
     }
 
     // Cache to hold custom search engine image results
@@ -78,6 +81,7 @@
         initializeDestinationSliders();
         initializeDestinationsForm();
         initializeContactForm();
+        initializeRefinedHomepageMotion();
     });
 
     function initializeSignupValidation() {
@@ -475,6 +479,19 @@
                 return;
             }
 
+            // Create progress elements dynamically
+            const progressIndicator = document.createElement('div');
+            progressIndicator.className = 'slider-progress-indicator';
+            progressIndicator.innerHTML = `<span class="progress-current">1</span> / <span class="progress-total">${slides.length}</span>`;
+            slider.appendChild(progressIndicator);
+
+            const progressBarWrap = document.createElement('div');
+            progressBarWrap.className = 'slider-progress-bar-wrap';
+            const progressBar = document.createElement('div');
+            progressBar.className = 'slider-progress-bar';
+            progressBarWrap.appendChild(progressBar);
+            slider.appendChild(progressBarWrap);
+
             let currentIndex = 0;
             let autoTimer = null;
             let touchStartX = 0;
@@ -493,6 +510,18 @@
                         dot.classList.toggle('is-active', index === currentIndex);
                         dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
                     });
+                }
+
+                // Update progress indicator text
+                const currentEl = slider.querySelector('.progress-current');
+                if (currentEl) {
+                    currentEl.textContent = String(currentIndex + 1);
+                }
+                // Update progress bar scale width
+                const barEl = slider.querySelector('.slider-progress-bar');
+                if (barEl) {
+                    const widthPercent = ((currentIndex + 1) / slides.length) * 100;
+                    barEl.style.width = `${widthPercent}%`;
                 }
             };
 
@@ -1427,6 +1456,220 @@
                 }
             }, 800);
         });
+    }
+
+    function initializeRefinedHomepageMotion() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 1. Progressive Navbar Blur & Parallax background & Scroll-reactive Hero content
+        const header = document.querySelector('.home-page header');
+        const heroContent = document.querySelector('.home-hero .hero-content');
+        const heroHeading = document.querySelector('.home-hero h2');
+        const heroDescription = document.querySelector('.home-hero p:not(.eyebrow)');
+        const heroActions = document.querySelector('.home-hero .hero-actions');
+        const heroHeight = document.querySelector('.home-hero')?.offsetHeight || 600;
+        const parallaxBg = document.querySelector('.parallax-bg');
+
+        let isTicking = false;
+
+        const updateScrollEffects = () => {
+            const scrollY = window.scrollY;
+
+            // Progressive Navbar Transition (50px to 150px)
+            if (header) {
+                if (prefersReducedMotion) {
+                    header.style.setProperty('--nav-blur', '16px');
+                    header.style.setProperty('--nav-bg-opacity', '0.78');
+                    header.style.setProperty('--nav-border-opacity', '0.08');
+                    header.style.setProperty('--nav-shadow-opacity', '0.4');
+                } else {
+                    let blur = 0;
+                    let bgOpacity = 0;
+                    let borderOpacity = 0;
+                    let shadowOpacity = 0;
+
+                    if (scrollY > 50) {
+                        const progress = Math.min((scrollY - 50) / 100, 1);
+                        blur = progress * 16;
+                        bgOpacity = progress * 0.78;
+                        borderOpacity = progress * 0.08;
+                        shadowOpacity = progress * 0.45;
+                    }
+
+                    header.style.setProperty('--nav-blur', `${blur}px`);
+                    header.style.setProperty('--nav-bg-opacity', String(bgOpacity));
+                    header.style.setProperty('--nav-border-opacity', String(borderOpacity));
+                    header.style.setProperty('--nav-shadow-opacity', String(shadowOpacity));
+                }
+            }
+
+            // Scroll-Reactive Hero (scales down to 0.95 and fades out)
+            if (heroContent) {
+                if (prefersReducedMotion) {
+                    heroContent.style.setProperty('--hero-scale', '1');
+                    heroContent.style.setProperty('--hero-opacity', '1');
+                } else {
+                    const fraction = Math.min(scrollY / heroHeight, 1);
+                    heroContent.style.setProperty('--hero-scale', String(1 - 0.05 * fraction));
+                    heroContent.style.setProperty('--hero-opacity', String(1 - fraction));
+
+                    if (heroHeading) {
+                        heroHeading.style.setProperty('--hero-h2-ty', `${-80 * fraction}px`);
+                        heroHeading.style.setProperty('--hero-h2-op', String(1 - fraction));
+                    }
+                    if (heroDescription) {
+                        heroDescription.style.setProperty('--hero-p-op', String(1 - fraction));
+                    }
+                    if (heroActions) {
+                        heroActions.style.setProperty('--hero-actions-scale', String(1 - 0.05 * fraction));
+                        heroActions.style.setProperty('--hero-actions-op', String(1 - fraction));
+                    }
+                }
+            }
+
+            // Performant Parallax Background (25% in Hero, 12% in other sections)
+            if (parallaxBg) {
+                if (prefersReducedMotion) {
+                    parallaxBg.style.transform = 'none';
+                } else {
+                    let ty = 0;
+                    if (scrollY <= heroHeight) {
+                        ty = -scrollY * 0.25;
+                    } else {
+                        ty = -heroHeight * 0.25 - (scrollY - heroHeight) * 0.12;
+                    }
+
+                    // Mobile reduction adjustment
+                    const isMobile = window.innerWidth < 768;
+                    const mobileFactor = isMobile ? 0.45 : 1.0;
+
+                    parallaxBg.style.transform = `translate3d(0, ${ty * mobileFactor}px, 0)`;
+                }
+            }
+
+            isTicking = false;
+        };
+
+        if (header || heroContent || parallaxBg) {
+            window.addEventListener('scroll', () => {
+                if (!isTicking) {
+                    window.requestAnimationFrame(updateScrollEffects);
+                    isTicking = true;
+                }
+            }, { passive: true });
+            
+            // Initial call
+            updateScrollEffects();
+        }
+
+        // 2. Headquarters Synchronized Reveals
+        const hqSection = document.querySelector('.home-location');
+        if (hqSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        hqSection.querySelector('.home-location-reveal-left')?.classList.add('is-visible');
+                        hqSection.querySelector('.home-location-reveal-right')?.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            observer.observe(hqSection);
+        }
+
+        // 3. Tour Packages Stagger Reveal
+        const tourSection = document.querySelector('.tour-packages-section');
+        if (tourSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const items = tourSection.querySelectorAll('.tour-reveal-item');
+                        if (prefersReducedMotion) {
+                            items.forEach(el => el.classList.add('is-visible'));
+                        } else {
+                            items.forEach((item, index) => {
+                                window.setTimeout(() => {
+                                    item.classList.add('is-visible');
+                                }, index * 150); // Stagger delay 150ms
+                            });
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            observer.observe(tourSection);
+        }
+
+        // 4. Trust Counters (Animate only the 2 requested: 30+ destinations and 10+ years)
+        const counters = document.querySelectorAll('.stat-counter');
+        if (counters.length) {
+            const animateCounter = (counter) => {
+                const target = parseInt(counter.getAttribute('data-count-to'), 10);
+                if (prefersReducedMotion) {
+                    counter.textContent = String(target);
+                    return;
+                }
+                const duration = 1500; // 1.5 seconds
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Easing: cubic ease-out
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.floor(easeProgress * target);
+                    counter.textContent = String(currentValue);
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(updateCount);
+                    } else {
+                        counter.textContent = String(target);
+                    }
+                };
+
+                window.requestAnimationFrame(updateCount);
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // 5. Optional Floating WhatsApp Button (Matches config but hidden by default)
+        const isWhatsAppButtonNeeded = false; // Move Floating WhatsApp CTA to OPTIONAL status (disabled by default)
+        if (isWhatsAppButtonNeeded) {
+            const waBtn = document.createElement('a');
+            waBtn.className = 'floating-whatsapp';
+            waBtn.style.display = 'flex';
+            waBtn.target = '_blank';
+            waBtn.rel = 'noopener noreferrer';
+            waBtn.ariaLabel = 'Contact Travel Baadsha on WhatsApp';
+
+            const message = "Hello Travel Baadsha,\nI would like assistance planning my trip.";
+            waBtn.href = generateWhatsAppURL(message);
+
+            waBtn.innerHTML = `
+                <svg viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.588 1.455 5.416 1.456 5.416 0 9.822-4.404 9.826-9.823.002-2.628-1.017-5.097-2.872-6.956C17.152 1.97 14.685 1.01 12.012 1.01c-5.42 0-9.825 4.405-9.828 9.825-.001 1.892.493 3.74 1.43 5.359L2.656 20.6l4.99-1.446zm11.528-7.14c-.313-.156-1.854-.915-2.133-1.016-.28-.103-.483-.156-.686.156-.203.311-.785 1.016-.96 1.219-.177.203-.35.228-.663.072-.313-.156-1.32-.486-2.515-1.553-.93-.83-1.557-1.854-1.74-2.167-.183-.313-.02-.483.137-.638.14-.14.313-.365.47-.547.157-.182.21-.313.313-.52.103-.209.052-.392-.026-.548-.078-.156-.686-1.656-.94-2.266-.246-.594-.496-.51-.68-.516-.177-.008-.38-.01-.58-.01-.204 0-.53.077-.804.375-.274.297-1.047 1.016-1.047 2.479 0 1.462 1.062 2.875 1.213 3.078.15.203 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.854-.759 2.115-1.457.26-.697.26-1.297.183-1.427-.078-.13-.28-.208-.593-.364z"/>
+                </svg>
+            `;
+            document.body.appendChild(waBtn);
+
+            window.setInterval(() => {
+                waBtn.classList.add('pulse');
+                window.setTimeout(() => {
+                    waBtn.classList.remove('pulse');
+                }, 1800);
+            }, 7000);
+        }
     }
 
     // Export public hooks to window securely inside the closure
