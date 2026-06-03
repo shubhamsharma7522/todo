@@ -417,6 +417,24 @@
             )
             : null;
 
+        const tallRevealObserver = observerSupported
+            ? new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    });
+                },
+                {
+                    threshold: 0.02,
+                    rootMargin: '0px 0px -4% 0px'
+                }
+            )
+            : null;
+
         const registerReveal = (element, options = {}) => {
             const delay = options.delay || 0;
             const distance = options.distance || 24;
@@ -433,7 +451,17 @@
             element.style.setProperty('--reveal-scale', String(scale));
 
             if (revealObserver) {
-                revealObserver.observe(element);
+                const isContainer = element.classList.contains('container') || 
+                                    element.classList.contains('category-stack') || 
+                                    element.classList.contains('contact-form') || 
+                                    element.classList.contains('destination-slider') ||
+                                    element.getBoundingClientRect().height > 500;
+                
+                if (isContainer && tallRevealObserver) {
+                    tallRevealObserver.observe(element);
+                } else {
+                    revealObserver.observe(element);
+                }
             } else {
                 element.classList.add('is-visible');
             }
