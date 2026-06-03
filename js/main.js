@@ -1,12 +1,12 @@
 (() => {
     'use strict';
 
-    window.WHATSAPP_PHONE = window.WHATSAPP_PHONE || '919828444420';
+    window.WHATSAPP_PHONE = window.WHATSAPP_PHONE || '917073145232';
     window.GCS_API_KEY = window.GCS_API_KEY || '';
     window.GCS_CX = window.GCS_CX || '';
 
     function generateWhatsAppURL(message) {
-        const WHATSAPP_NUMBER = "919828444420";
+        const WHATSAPP_NUMBER = "917073145232";
         return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     }
 
