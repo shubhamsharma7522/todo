@@ -2,7 +2,7 @@
     'use strict';
 
     const BUSINESS_CONFIG = {
-        whatsapp: window.WHATSAPP_PHONE || '919838444420'
+        whatsapp: window.WHATSAPP_PHONE || '919828444420'
     };
 
     window.WHATSAPP_PHONE = BUSINESS_CONFIG.whatsapp;
