@@ -59,7 +59,6 @@ body {
     display: none;
 }
 
-.home-page header,
 .home-page main,
 .home-page footer {
     position: relative;
@@ -131,7 +130,7 @@ p {
 header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999 !important;
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.92);
     border-bottom: 1px solid var(--border);
@@ -1351,7 +1350,7 @@ section[id] {
     background: rgba(0, 0, 0, 0.7);
     display: grid;
     place-items: center;
-    z-index: 2000;
+    z-index: 10000;
     padding: 1rem;
     opacity: 0;
     pointer-events: none;
@@ -1415,7 +1414,7 @@ section[id] {
     background: rgba(0, 0, 0, 0.74);
     display: grid;
     place-items: center;
-    z-index: 2100;
+    z-index: 10100;
     padding: 1rem;
     opacity: 0;
     pointer-events: none;
@@ -2131,7 +2130,7 @@ footer p {
         top: calc(100% + 0.5rem);
         left: 0;
         right: 0;
-        z-index: 1001;
+        z-index: 9500;
         flex-direction: column;
         background-color: var(--surface);
         border: 1px solid var(--border);
@@ -2163,12 +2162,16 @@ footer p {
     }
 
     .nav-links a {
-        display: block;
-        padding: 0.72rem 0.9rem;
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 0.72rem 1.2rem;
+        box-sizing: border-box;
     }
 
     .nav-links .nav-cta {
         text-align: center;
+        justify-content: center;
     }
 
     .hero {
@@ -2452,7 +2455,6 @@ footer p {
     line-height: 1.72;
 }
 
-.immersive-page header,
 .immersive-page main,
 .immersive-page footer {
     position: relative;
@@ -2959,4 +2961,73 @@ footer p {
 .tour-reveal-item.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   Travel Baadsha - Mobile Responsiveness & Stacking Context Fixes
+   ========================================================================== */
+
+/* Scroll Lock Helper */
+body.no-scroll {
+    overflow: hidden !important;
+}
+
+/* Mobile Menu Backdrop */
+.mobile-nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.mobile-nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Form Inputs and Button touch targets for mobile accessibility */
+@media (max-width: 900px) {
+    .form-group input,
+    .form-group select {
+        min-height: 44px;
+        font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+    }
+    .form-group textarea {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+    }
+    .btn-primary,
+    .btn-secondary,
+    button[type="submit"],
+    .booking-dialog button,
+    .vehicle-dialog button {
+        min-height: 48px;
+    }
+}
+
+/* Optimize form card paddings on narrow mobile screens */
+@media (max-width: 480px) {
+    .contact-form,
+    .signin-form,
+    .auth-card,
+    .auth-panel {
+        padding: 1.2rem;
+    }
+}
+
+/* Prevent menu button layout overflow on extremely narrow viewports */
+@media (max-width: 360px) {
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    .logo-img {
+        height: 36px;
+    }
 }
