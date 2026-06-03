@@ -12,7 +12,7 @@
 
     const defaultTagsByCategory = {
         sedan: ['Premium Interiors', 'Silent Cabin', 'Smooth Comfort'],
-        'mini-bus': ['Spacious Cabin', 'Air Conditioning', 'Luggage Bay'],
+        mpv: ['Spacious Cabin', 'Air Conditioning', 'Luggage Bay'],
         traveller: ['All-Terrain Ready', 'Plush Seats', 'Long Route Comfort']
     };
 
@@ -725,7 +725,7 @@
     function formatCategoryName(category) {
         const labels = {
             sedan: 'Sedan',
-            'mini-bus': 'Mini Bus',
+            mpv: 'MPV',
             traveller: 'Traveller'
         };
         return labels[category] || (category || '').replace('-', ' ');
@@ -1116,13 +1116,13 @@
         const form = document.getElementById('booking-form');
         let cars = Array.isArray(window.VEHICLES) ? window.VEHICLES : [];
 
-        // Category filters updated to only display the requested: Sedan, Mini Bus, and Traveller.
+        // Category filters updated to only display the requested: Sedan, MPV, and Traveller.
         const categoryLabels = {
             sedan: 'Sedan',
-            'mini-bus': 'Mini Bus',
+            mpv: 'MPV',
             traveller: 'Traveller'
         };
-        const categoryOrder = ['sedan', 'mini-bus', 'traveller'];
+        const categoryOrder = ['sedan', 'mpv', 'traveller'];
 
         const renderCars = (category) => {
             grid.innerHTML = '';
