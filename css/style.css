@@ -1349,8 +1349,14 @@ section[id] {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
-    display: grid;
-    place-items: center;
+    /* Changed from grid/place-items:center to flex/flex-start so the overlay itself
+       scrolls — dialog always starts at the top and users can scroll to reach the bottom */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling on the overlay */
+    overscroll-behavior: contain;      /* Prevent scroll chaining to body */
     z-index: 10000;
     padding: 1rem;
     opacity: 0;
@@ -1375,6 +1381,8 @@ section[id] {
     padding: 1.4rem;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
     position: relative;
+    flex-shrink: 0;
+    margin-bottom: 1rem; /* breathing room at bottom of overlay scroll */
 }
 
 .booking-dialog input,
@@ -1390,14 +1398,32 @@ section[id] {
 
 .close-modal {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
+    top: 8px;
+    right: 8px;
+    background: rgba(15, 15, 22, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
     color: #f7f2e8;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    min-width: 44px;  /* WCAG 44px minimum touch target */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
 }
+.close-modal:hover,
+.close-modal:focus-visible {
+    background: rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.4);
+    outline: 2px solid rgba(212, 175, 55, 0.5);
+    outline-offset: 2px;
+}
+
 
 .booking-hero h3 {
     margin: 0.3rem 0;
@@ -1413,8 +1439,14 @@ section[id] {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.74);
-    display: grid;
-    place-items: center;
+    /* Same fix as booking-modal: flex/flex-start/overflow-y:auto
+       so dialog starts at top and users can scroll to bottom */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     z-index: 10100;
     padding: 1rem;
     opacity: 0;
@@ -1439,6 +1471,8 @@ section[id] {
     padding: 1.1rem;
     box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
     position: relative;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
 }
 
 .vehicle-layout {
