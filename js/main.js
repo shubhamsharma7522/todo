@@ -726,7 +726,7 @@
         const labels = {
             sedan: 'Sedan',
             mpv: 'MPV',
-            traveller: 'Traveller'
+            traveller: 'Bus/Traveller'
         };
         return labels[category] || (category || '').replace('-', ' ');
     }
@@ -1116,11 +1116,11 @@
         const form = document.getElementById('booking-form');
         let cars = Array.isArray(window.VEHICLES) ? window.VEHICLES : [];
 
-        // Category filters updated to only display the requested: Sedan, MPV, and Traveller.
+        // Category filters updated to only display the requested: Sedan, MPV, and Bus/Traveller.
         const categoryLabels = {
             sedan: 'Sedan',
             mpv: 'MPV',
-            traveller: 'Traveller'
+            traveller: 'Bus/Traveller'
         };
         const categoryOrder = ['sedan', 'mpv', 'traveller'];
 

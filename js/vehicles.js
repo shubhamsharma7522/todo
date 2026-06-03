@@ -135,7 +135,7 @@ window.VEHICLES = [
   {
     id: '40-seater-bus',
     name: '40 Seater Bus',
-    category: 'mpv',
+    category: 'traveller',
     image: './media/vehicles/40-seater-bus.jpg',
     description: 'Spacious and comfortable bus designed for corporate tours, weddings, school trips, and large group transportation.',
     pricePerDay: 18000,

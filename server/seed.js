@@ -97,7 +97,7 @@ const vehicles = [
 
   // ── MPV ──────────────────────────────────────────────────────────────────
   {
-    name: '40 Seater Bus', brand: 'Tata', category: 'mpv',
+    name: '40 Seater Bus', brand: 'Tata', category: 'traveller',
     fuelType: 'Diesel', transmission: 'Automatic', seats: 40, color: 'White',
     pricePerDay: 18000,
     image: './media/vehicles/40-seater-bus.jpg',
