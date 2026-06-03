@@ -795,8 +795,14 @@
         const modal = document.getElementById('booking-modal');
         if (!modal) return;
         modal.hidden = false;
-        modal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
+        // Slight delay so opacity transition fires after hidden is removed
+        window.requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+        });
+        // Use class-based scroll lock (consistent with mobile nav backdrop)
+        document.body.classList.add('no-scroll');
+        // Always reset overlay scroll to top so close button is immediately visible
+        modal.scrollTop = 0;
 
         document.getElementById('booking-name').textContent = car.name;
         document.getElementById('booking-category').textContent = formatCategoryName(car.category);
@@ -813,6 +819,12 @@
             status.textContent = '';
             status.classList.remove('is-error', 'is-success');
         }
+
+        // Move focus inside modal for accessibility
+        const firstInput = modal.querySelector('input, button');
+        if (firstInput) {
+            window.setTimeout(() => firstInput.focus(), 60);
+        }
     }
 
     function hideBookingModal() {
@@ -820,7 +832,7 @@
         if (!modal) return;
         modal.classList.remove('is-open');
         modal.hidden = true;
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
     }
 
     const manualGalleryOverrides = window.VEHICLE_GALLERIES || {};
@@ -946,7 +958,7 @@
         if (!modal) return;
         modal.classList.remove('is-open');
         modal.hidden = true;
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
     }
 
     // Controls setup: escapes, keyboard mapping, gallery arrows. Defensive selectors prevent null pointer exceptions.
@@ -1042,8 +1054,18 @@
         }
 
         modal.hidden = false;
-        modal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
+        window.requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+        });
+        document.body.classList.add('no-scroll');
+        // Always reset overlay scroll to top so close button is immediately visible
+        modal.scrollTop = 0;
+
+        // Move focus inside modal for accessibility
+        const closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) {
+            window.setTimeout(() => closeBtn.focus(), 60);
+        }
     }
 
     function validateDetailDates(form) {
