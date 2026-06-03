@@ -35,16 +35,55 @@
         const navLinks = document.querySelector('.nav-links');
 
         if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                const isMenuOpen = navLinks.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', isMenuOpen ? 'true' : 'false');
+            // Create backdrop element dynamically
+            let backdrop = document.querySelector('.mobile-nav-backdrop');
+            if (!backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.className = 'mobile-nav-backdrop';
+                document.body.appendChild(backdrop);
+            }
+
+            const closeMenu = () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('no-scroll');
+                backdrop.classList.remove('active');
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+                document.body.classList.add('no-scroll');
+                backdrop.classList.add('active');
+            };
+
+            hamburger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (navLinks.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
 
+            // Close on navigation click
             document.querySelectorAll('.nav-links a').forEach((link) => {
                 link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
+                    closeMenu();
                 });
+            });
+
+            // Close on backdrop click (outside click)
+            backdrop.addEventListener('click', () => {
+                closeMenu();
+            });
+
+            // Close on Escape key press (keyboard accessibility)
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                    hamburger.focus();
+                }
             });
         }
 
