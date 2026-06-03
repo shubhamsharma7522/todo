@@ -1274,152 +1274,6 @@
             });
         }
 
-        function initializeDestinationsForm() {
-            const destForm = document.getElementById('destination-enquiry-form');
-            if (!destForm) return;
-
-            destForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const status = destForm.querySelector('.form-status');
-
-                const destSelect = destForm.querySelector('#destination-name');
-                const travelDateInput = destForm.querySelector('#travel-date');
-                const groupSizeInput = destForm.querySelector('#group-size');
-                const pickupCityInput = destForm.querySelector('#pickup-city');
-
-                if (!destSelect || !travelDateInput || !groupSizeInput || !pickupCityInput) return;
-
-                const destination = destSelect.options[destSelect.selectedIndex] ? destSelect.options[destSelect.selectedIndex].text : destSelect.value;
-                const journeyDate = travelDateInput.value;
-                const totalTravelers = groupSizeInput.value;
-                const pickupCity = pickupCityInput.value.trim();
-
-                if (!destSelect.value || !journeyDate || !totalTravelers || !pickupCity) {
-                    if (status) {
-                        status.textContent = 'All fields are required.';
-                        status.classList.add('is-error');
-                        status.classList.remove('is-success');
-                    }
-                    return;
-                }
-
-                if (Number(totalTravelers) < 1) {
-                    if (status) {
-                        status.textContent = 'Total travelers must be at least 1.';
-                        status.classList.add('is-error');
-                        status.classList.remove('is-success');
-                    }
-                    return;
-                }
-
-                const message = [
-                    '====================================',
-                    'TRAVEL BAADSHA',
-                    'CUSTOM ITINERARY REQUEST',
-                    '====================================',
-                    '',
-                    'Destination:',
-                    destination,
-                    '',
-                    'Journey Date:',
-                    journeyDate,
-                    '',
-                    'Total Travelers:',
-                    totalTravelers,
-                    '',
-                    'Pickup City:',
-                    pickupCity,
-                    '',
-                    'Submitted Via:',
-                    'Travel Baadsha Website',
-                    '',
-                    '===================================='
-                ].join('\n');
-
-                if (status) {
-                    status.textContent = 'Redirecting to WhatsApp...';
-                    status.classList.remove('is-error');
-                    status.classList.add('is-success');
-                }
-
-                window.setTimeout(() => {
-                    const url = generateWhatsAppURL(message);
-                    window.open(url, '_blank');
-                    destForm.reset();
-                    if (status) {
-                        status.textContent = '';
-                        status.classList.remove('is-success');
-                    }
-                }, 800);
-            });
-        }
-
-        function initializeContactForm() {
-            const contactForm = document.querySelector('form.contact-form:not(#destination-enquiry-form):not([data-api-endpoint="/api/video-enquiry"])');
-            if (!contactForm) return;
-
-            contactForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const status = contactForm.querySelector('.form-status');
-
-                const nameInput = contactForm.querySelector('#name');
-                const phoneInput = contactForm.querySelector('#phone');
-                const reqInput = contactForm.querySelector('#requirement');
-
-                if (!nameInput || !phoneInput || !reqInput) return;
-
-                const name = nameInput.value.trim();
-                const phone = phoneInput.value.trim();
-                const requirements = reqInput.value.trim();
-
-                if (!name || !phone || !requirements) {
-                    if (status) {
-                        status.textContent = 'All fields are required.';
-                        status.classList.add('is-error');
-                        status.classList.remove('is-success');
-                    }
-                    return;
-                }
-
-                const message = [
-                    '====================================',
-                    'TRAVEL BAADSHA',
-                    'BOOKING INQUIRY',
-                    '====================================',
-                    '',
-                    'Full Name:',
-                    name,
-                    '',
-                    'Phone Number:',
-                    phone,
-                    '',
-                    'Travel Requirements:',
-                    requirements,
-                    '',
-                    'Submitted Via:',
-                    'Travel Baadsha Website',
-                    '',
-                    '===================================='
-                ].join('\n');
-
-                if (status) {
-                    status.textContent = 'Redirecting to WhatsApp...';
-                    status.classList.remove('is-error');
-                    status.classList.add('is-success');
-                }
-
-                window.setTimeout(() => {
-                    const url = generateWhatsAppURL(message);
-                    window.open(url, '_blank');
-                    contactForm.reset();
-                    if (status) {
-                        status.textContent = '';
-                        status.classList.remove('is-success');
-                    }
-                }, 800);
-            });
-        }
-
         // Vehicles always loaded from pre-populated static window.VEHICLES array
         if (!cars.length) {
             grid.innerHTML = '<p class="form-status is-error">No vehicles available at the moment. Please contact us directly.</p>';
@@ -1427,6 +1281,152 @@
         }
 
         renderCars('all');
+    }
+
+    function initializeDestinationsForm() {
+        const destForm = document.getElementById('destination-enquiry-form');
+        if (!destForm) return;
+
+        destForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const status = destForm.querySelector('.form-status');
+
+            const destSelect = destForm.querySelector('#destination-name');
+            const travelDateInput = destForm.querySelector('#travel-date');
+            const groupSizeInput = destForm.querySelector('#group-size');
+            const pickupCityInput = destForm.querySelector('#pickup-city');
+
+            if (!destSelect || !travelDateInput || !groupSizeInput || !pickupCityInput) return;
+
+            const destination = destSelect.options[destSelect.selectedIndex] ? destSelect.options[destSelect.selectedIndex].text : destSelect.value;
+            const journeyDate = travelDateInput.value;
+            const totalTravelers = groupSizeInput.value;
+            const pickupCity = pickupCityInput.value.trim();
+
+            if (!destSelect.value || !journeyDate || !totalTravelers || !pickupCity) {
+                if (status) {
+                    status.textContent = 'All fields are required.';
+                    status.classList.add('is-error');
+                    status.classList.remove('is-success');
+                }
+                return;
+            }
+
+            if (Number(totalTravelers) < 1) {
+                if (status) {
+                    status.textContent = 'Total travelers must be at least 1.';
+                    status.classList.add('is-error');
+                    status.classList.remove('is-success');
+                }
+                return;
+            }
+
+            const message = [
+                '----------------------------------',
+                'TRAVEL BAADSHA',
+                'CUSTOM ITINERARY REQUEST',
+                '----------------------------------',
+                '',
+                'Destination:',
+                destination,
+                '',
+                'Journey Date:',
+                journeyDate,
+                '',
+                'Total Travelers:',
+                totalTravelers,
+                '',
+                'Pickup City:',
+                pickupCity,
+                '',
+                'Submitted Via:',
+                'Travel Baadsha Website',
+                '',
+                '----------------------------------'
+            ].join('\n');
+
+            if (status) {
+                status.textContent = 'Redirecting to WhatsApp...';
+                status.classList.remove('is-error');
+                status.classList.add('is-success');
+            }
+
+            window.setTimeout(() => {
+                const url = generateWhatsAppURL(message);
+                window.open(url, '_blank');
+                destForm.reset();
+                if (status) {
+                    status.textContent = '';
+                    status.classList.remove('is-success');
+                }
+            }, 800);
+        });
+    }
+
+    function initializeContactForm() {
+        const contactForm = document.querySelector('form.contact-form:not(#destination-enquiry-form):not([data-api-endpoint="/api/video-enquiry"])');
+        if (!contactForm) return;
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const status = contactForm.querySelector('.form-status');
+
+            const nameInput = contactForm.querySelector('#name');
+            const phoneInput = contactForm.querySelector('#phone');
+            const reqInput = contactForm.querySelector('#requirement');
+
+            if (!nameInput || !phoneInput || !reqInput) return;
+
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const requirements = reqInput.value.trim();
+
+            if (!name || !phone || !requirements) {
+                if (status) {
+                    status.textContent = 'All fields are required.';
+                    status.classList.add('is-error');
+                    status.classList.remove('is-success');
+                }
+                return;
+            }
+
+            const message = [
+                '----------------------------------',
+                'TRAVEL BAADSHA',
+                'BOOKING INQUIRY',
+                '----------------------------------',
+                '',
+                'Full Name:',
+                name,
+                '',
+                'Phone Number:',
+                phone,
+                '',
+                'Travel Requirements:',
+                requirements,
+                '',
+                'Submitted Via:',
+                'Travel Baadsha Website',
+                '',
+                '----------------------------------'
+            ].join('\n');
+
+            if (status) {
+                status.textContent = 'Redirecting to WhatsApp...';
+                status.classList.remove('is-error');
+                status.classList.add('is-success');
+            }
+
+            window.setTimeout(() => {
+                const url = generateWhatsAppURL(message);
+                window.open(url, '_blank');
+                contactForm.reset();
+                if (status) {
+                    status.textContent = '';
+                    status.classList.remove('is-success');
+                }
+            }, 800);
+        });
     }
 
     // Export public hooks to window securely inside the closure
