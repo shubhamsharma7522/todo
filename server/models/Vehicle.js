@@ -6,7 +6,7 @@ const vehicleSchema = new mongoose.Schema(
         brand: { type: String, required: true },
         category: {
             type: String,
-            enum: ['sedan', 'mini-bus', 'traveller'],
+            enum: ['sedan', 'mpv', 'traveller'],
             required: true
         },
         fuelType: { type: String, required: true },
